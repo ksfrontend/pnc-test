@@ -1,0 +1,53 @@
+<!-- Registration form Starts -->
+<div class="container">
+  <div class="form">
+    <h2 class="title">Registration</h2>
+    <form class="registration-form" #registrationForm="ngForm" autocomplete="off" (ngSubmit)="submit()">
+
+      <!--  Name Field     -->
+      <mat-form-field class="input-field" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter name" name="name" [(ngModel)]="registerData.name" #name="ngModel" required>
+      </mat-form-field>
+      <div class="req-warning">
+        {{((submitted || name?.touched) && !registerData.name) ? 'Enter name' : ''}}
+      </div>
+
+      <!--  Email Field     -->
+      <mat-form-field class="input-field" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter email" name="email"
+               [(ngModel)]="registerData.email"
+               #email="ngModel" required
+               pattern="^\w+([\.\-_+]?\w+)*@\w+([\.\-_+]?\w+)*(\.\w{2,3})+$">
+      </mat-form-field>
+      <div class="req-warning">
+        {{((submitted || email?.touched) && !registerData.email) ? 'Enter email address' : ((email?.errors &&
+        email?.errors?.['pattern']) ? 'Enter valid email address' : '')}}
+      </div>
+
+      <!--  Password Field     -->
+      <mat-form-field class="input-field" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter password" name="password" [(ngModel)]="registerData.password" #password="ngModel" required>
+      </mat-form-field>
+      <div class="req-warning">
+        {{((submitted || password?.touched) && !registerData.password) ? 'Enter password' :''}}
+      </div>
+
+      <!-- Bio Field      -->
+      <mat-form-field class="input-field" appearance="fill">
+        <mat-label>Bio</mat-label>
+        <textarea matInput placeholder="Enter Bio" name="bio" [(ngModel)]="registerData.bio" #bio="ngModel" required></textarea>
+      </mat-form-field>
+      <div class="req-warning">
+        {{((submitted || bio?.touched) && !registerData.bio) ? 'Enter bio' : ''}}
+      </div>
+
+      <button mat-raised-button class="submit-button" color="primary" [disabled]="!registrationForm?.valid" type="submit">Submit</button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Registration form End -->
