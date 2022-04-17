@@ -1,1 +1,17 @@
-<p>profile works!</p>
+<!-- Profile Details Start -->
+<div *ngIf="errorOccurred else profileDetailsLoad">
+  Page failed to load a profile details
+</div>
+<ng-template #profileDetailsLoad>
+  <div class="container">
+    <h2 class="title">Profile Details : </h2>
+    <div class="details-container">
+      <mat-list>
+        <mat-list-item><b>Name : </b> {{ profileDetails?.name }} </mat-list-item>
+        <mat-list-item><b>Email : </b> {{ profileDetails?.email }} </mat-list-item>
+        <mat-list-item><b>Bio : </b> {{ profileDetails?.bio }} </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</ng-template>
+<!-- Profile Details End -->

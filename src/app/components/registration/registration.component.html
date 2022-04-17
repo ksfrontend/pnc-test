@@ -29,7 +29,9 @@
       <!--  Password Field     -->
       <mat-form-field class="input-field" appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Enter password" name="password" [(ngModel)]="registerData.password" #password="ngModel" required>
+        <input matInput placeholder="Enter password" type="password"
+               name="password" [(ngModel)]="registerData.password"
+               #password="ngModel" required>
       </mat-form-field>
       <div class="req-warning">
         {{((submitted || password?.touched) && !registerData.password) ? 'Enter password' :''}}
